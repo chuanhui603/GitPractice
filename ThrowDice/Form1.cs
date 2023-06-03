@@ -31,12 +31,13 @@ namespace ThrowDice
         private void btn_Start_Click(object sender, EventArgs e)
         {
             CreatDice Creat = new CreatDice();
-            ThrowDice Throw = new ThrowDice();
+            DiceRule Throw = new DiceRule();
             Panel palDice = pal_Dice;                                                                     //骰子文字方塊出現區域(或者可以做成UserControl?)
             List<int> DiceNum = new List<int>();                                           //骰子的點數
             List<int> Sum = new List<int>();                                                    //骰子判斷會給出相同數字跟總數兩種結果
-            Throw.LeastTwoSameDice(4, DiceNum, Sum);                         //骰子數量跟回傳結果
-            Creat.CreateDicePanel(4, DiceNum, Sum, palDice);                //在panel創造骰子結果
+            int Num = 4;          
+            Throw.LeastTwoSameDice(Num, DiceNum, Sum);                         //骰子數量  回傳骰子號碼  回傳結果
+            Creat.CreateDicePanel(Num, DiceNum, Sum, palDice);                //在panel輸出畫面
 
         }
     }
@@ -70,6 +71,7 @@ namespace ThrowDice
                     DiceBox.Location = new Point(DiceLocalColumn + DiceColumnLength * i, DiceLocalRow);
                     DiceBox.Size = new Size(DiceSizeWidth, DiceSizeHeigth);
                     DiceBox.Text = Dicenumber;
+                    DiceBox.ReadOnly = true;
                     DiceBox.TextAlign = HorizontalAlignment.Center;
                     palDice.Controls.Add(DiceBox);
                 }
@@ -99,32 +101,37 @@ namespace ThrowDice
         }
     
     }
-    public class ThrowDice  //判斷骰子規則
+    public class DiceRule  //骰子規則
     {
-        public void LeastTwoSameDice(int Dice, List<int> Dicenum, List<int> Sum)    //添加亂數號碼
+        public void LeastTwoSameDice(int Dice, List<int> Dicenum, List<int> Sum)    //骰子至少兩顆數量相同
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());  //Guid.NewGuid().GetHashCode()能短時間產生更亂的亂數
             int MaxDiceNumber = 6;                                                                                   //設定最大數字為6    
-            while (Sum.Count == 0)
+            int Throwfour = 4;
+            if(Dice!= Throwfour)                                                                                        //如果不是丟4顆骰子則跳出
             {
-                for (int i = 0; i < Dice; i++)                                                                           //依輸入骰子數量添加List數字
+                while (Sum.Count == 0)
                 {
-                    int RandomNum = random.Next(1, MaxDiceNumber + 1);         //亂數範圍在1~6之間            
-                    Dicenum.Add(RandomNum);
-                }
-                Dicenum.Sort();
-                FourDiceThrow(Dicenum, Sum);                                                                 //判斷骰子數量是否重複
-                if(Sum.Count == 0)                                                                                          //沒有結果則清空骰子直到跳出迴圈
-                {
-                    Dicenum.Clear();
+                    for (int i = 0; i < Dice; i++)                                                                           //依輸入骰子數量添加List數字
+                    {
+                        int RandomNum = random.Next(1, MaxDiceNumber + 1);         //亂數範圍在1~6之間            
+                        Dicenum.Add(RandomNum);
+                    }
+                    Dicenum.Sort();
+                    FourDiceThrowSame(Dicenum, Sum);                                                                 //判斷骰子數量是否重複
+                    if (Sum.Count == 0)                                                                                          //沒有結果則清空骰子直到跳出迴圈
+                    {
+                        Dicenum.Clear();
+                    }
                 }
             }
+         
         }
 
-        public void FourDiceThrow(List<int> Dicenum, List<int> Sum)               //4枚骰子的判斷方法
+        public void FourDiceThrowSame(List<int> Dicenum, List<int> Sum)               //4枚骰子的判斷方法
         {
             int SameNum = 0;             //相同的骰子號碼
-            int totalNum = 0;
+            int totalNum = 0;              //其餘骰子相加
             try
             {     
                 /*  4枚骰子的判斷方式  若有兩組相同數字則以最小的為主 沒有相同數字則直接丟catch*/
