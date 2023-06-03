@@ -44,7 +44,7 @@ namespace ThrowDice
 
     public class CreatDice   //設計骰子樣式跟排版
     {
-        public void Clear(Panel palDice)  //清空Dicepanel
+        public void Clear(Panel palDice)  //清空panel頁面
         {
             palDice.Controls.Clear();
         }
@@ -104,7 +104,7 @@ namespace ThrowDice
         public void LeastTwoSameDice(int Dice, List<int> Dicenum, List<int> Sum)    //添加亂數號碼
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());  //Guid.NewGuid().GetHashCode()能短時間產生更亂的亂數
-            int MaxDiceNumber = 6;                                                                                   //設定最大數字為6      //傳值給判斷函數判斷骰子是否有重複
+            int MaxDiceNumber = 6;                                                                                   //設定最大數字為6    
             while (Sum.Count == 0)
             {
                 for (int i = 0; i < Dice; i++)                                                                           //依輸入骰子數量添加List數字
