@@ -34,8 +34,13 @@ namespace ThrowDice
             DiceRule Throw = new DiceRule();
             Panel palDice = pal_Dice;                                                                     //骰子文字方塊出現區域(或者可以做成UserControl?)
             List<int> DiceNum = new List<int>();                                           //骰子的點數
+
+            //int[] sum =new int[2];             這裡我想用陣列但進LeastTwoSameDice後沒辦法回傳值 我不清楚原因是什麼 所以改成List
             List<int> Sum = new List<int>();                                                    //骰子判斷會給出相同數字跟總數兩種結果
             int Num = 4;          
+
+
+
             Throw.LeastTwoSameDice(Num, DiceNum, Sum);                         //骰子數量  回傳骰子號碼  回傳結果
             Creat.CreateDicePanel(Num, DiceNum, Sum, palDice);                //在panel輸出畫面
 
@@ -89,7 +94,7 @@ namespace ThrowDice
                     Sumlabel.Font = new Font("Calibri", SumFontSize);
                     Sumlabel.Location = new Point(SumLocalColumn + SumColumnLength * i, SumLocalRow);
                     Sumlabel.Width = SumSizeWidth;
-                    Sumlabel.Text = i == 0 ? $"相同數字:{SumResult[i]}" : $"總和:{SumResult[i]}";
+                    Sumlabel.Text = i == 0 ? $"相同數字:{SumResult[i]}" : $"總和:{SumResult[i]}";  //label只有兩個
                     palDice.Controls.Add(Sumlabel);
                 }
             }
@@ -103,25 +108,25 @@ namespace ThrowDice
     }
     public class DiceRule  //骰子規則
     {
-        public void LeastTwoSameDice(int Dice, List<int> Dicenum, List<int> Sum)    //骰子至少兩顆數量相同
+        public void LeastTwoSameDice(int Dice, List<int> DiceNum, List<int> Sum)    //骰子至少兩顆數量相同
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());  //Guid.NewGuid().GetHashCode()能短時間產生更亂的亂數
             int MaxDiceNumber = 6;                                                                                   //設定最大數字為6    
             int Throwfour = 4;
             if(Dice!= Throwfour)                                                                                        //如果不是丟4顆骰子則跳出
             {
-                while (Sum.Count == 0)
+                while (Sum.Count == 0)                                                                              //只有得出相同數字和總和才會跳出迴圈
                 {
                     for (int i = 0; i < Dice; i++)                                                                           //依輸入骰子數量添加List數字
                     {
                         int RandomNum = random.Next(1, MaxDiceNumber + 1);         //亂數範圍在1~6之間            
-                        Dicenum.Add(RandomNum);
+                        DiceNum.Add(RandomNum);
                     }
-                    Dicenum.Sort();
-                    FourDiceThrowSame(Dicenum, Sum);                                                                 //判斷骰子數量是否重複
+                    DiceNum.Sort();
+                    FourDiceThrowSame(DiceNum, Sum);                                                                 //判斷骰子數量是否重複
                     if (Sum.Count == 0)                                                                                          //沒有結果則清空骰子直到跳出迴圈
                     {
-                        Dicenum.Clear();
+                        DiceNum.Clear();
                     }
                 }
             }
@@ -134,7 +139,7 @@ namespace ThrowDice
             int totalNum = 0;              //其餘骰子相加
             try
             {     
-                /*  4枚骰子的判斷方式  若有兩組相同數字則以最小的為主 沒有相同數字則直接丟catch*/
+                /*4枚骰子的判斷方式  若有兩組相同數字則以最小的為主 沒有相同數字則直接丟catch*/
                 if (Dicenum[0] == Dicenum[1])
                 {
                     SameNum = Dicenum[0];
