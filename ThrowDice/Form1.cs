@@ -113,8 +113,7 @@ namespace ThrowDice
             Random random = new Random(Guid.NewGuid().GetHashCode());  //Guid.NewGuid().GetHashCode()能短時間產生更亂的亂數
             int MaxDiceNumber = 6;                                                                                   //設定最大數字為6    
             int Throwfour = 4;
-            if(Dice!= Throwfour)                                                                                        //如果不是丟4顆骰子則跳出
-            {
+         
                 while (Sum.Count == 0)                                                                              //只有得出相同數字和總和才會跳出迴圈
                 {
                     for (int i = 0; i < Dice; i++)                                                                           //依輸入骰子數量添加List數字
@@ -129,7 +128,7 @@ namespace ThrowDice
                         DiceNum.Clear();
                     }
                 }
-            }
+            
          
         }
 
