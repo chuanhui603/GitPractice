@@ -17,6 +17,12 @@ namespace PapperScissorRock
             InitializeComponent();
         }
 
+        private void btn_start_Click(object sender, EventArgs e)
+        {
+            paperScissorRockGame game = new paperScissorRockGame();
+            var player = game.GetGesture();
+            txtPlayer.Text = 
+        }
     }
 
 
@@ -35,7 +41,7 @@ namespace PapperScissorRock
     {
         public static GameOutCome GameOutCome(Gesture player, Gesture other)
         {
-            GameOutCome result = new GameOutCome();
+            var result = new GameOutCome();
             //Draw
             if (player == Gesture.Paper && other == Gesture.Paper)
             {
@@ -86,11 +92,8 @@ namespace PapperScissorRock
         public static Gesture GetGesture()
         {
             Random random = new Random();
-            var gesturePlayer = random.Next(0, 4);
-            var gestureOther = random.Next(0, 4);
-
-            GameOutCome((Gesture)gesturePlayer, (Gesture)gestureOther);
-            
+            var result = random.Next(0, 4);
+            return (Gesture)result;
         }
     }
 }

@@ -28,20 +28,94 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btn_start = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPlayer = new System.Windows.Forms.TextBox();
+            this.txtOther = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // btn_start
+            // 
+            this.btn_start.Location = new System.Drawing.Point(248, 281);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(86, 37);
+            this.btn_start.TabIndex = 0;
+            this.btn_start.Text = "開始猜拳";
+            this.btn_start.UseVisualStyleBackColor = true;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(182, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "我";
+            // 
+            // txtPlayer
+            // 
+            this.txtPlayer.Location = new System.Drawing.Point(148, 173);
+            this.txtPlayer.Name = "txtPlayer";
+            this.txtPlayer.Size = new System.Drawing.Size(100, 22);
+            this.txtPlayer.TabIndex = 2;
+            // 
+            // txtOther
+            // 
+            this.txtOther.Location = new System.Drawing.Point(348, 173);
+            this.txtOther.Name = "txtOther";
+            this.txtOther.Size = new System.Drawing.Size(100, 22);
+            this.txtOther.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(384, 148);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "對手";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Control;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(272, 248);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "label3";
+            this.label3.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 596);
+            this.ClientSize = new System.Drawing.Size(591, 404);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtOther);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtPlayer);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btn_start);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btn_start;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPlayer;
+        private System.Windows.Forms.TextBox txtOther;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
