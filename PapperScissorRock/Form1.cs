@@ -19,13 +19,11 @@ namespace PapperScissorRock
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-
             Gesture player = paperScissorRockGame.GetGesture();
             Gesture other = paperScissorRockGame.GetGesture();
             txtPlayer.Text = player.ToString();
             txtOther.Text = other.ToString();
             lbl_result.Text = paperScissorRockGame.GameOutCome(player, other).ToString();
-
         }
     }
 
