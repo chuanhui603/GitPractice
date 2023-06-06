@@ -32,8 +32,6 @@ namespace PapperScissorRock
     public enum Gesture
     {
         Sciccors, Paper, Rock
-
-
     }
 
     public enum GameOutCome
