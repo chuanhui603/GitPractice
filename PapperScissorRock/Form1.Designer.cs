@@ -33,7 +33,7 @@
             this.txtPlayer = new System.Windows.Forms.TextBox();
             this.txtOther = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_result = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_start
@@ -59,6 +59,7 @@
             // 
             this.txtPlayer.Location = new System.Drawing.Point(148, 173);
             this.txtPlayer.Name = "txtPlayer";
+            this.txtPlayer.ReadOnly = true;
             this.txtPlayer.Size = new System.Drawing.Size(100, 22);
             this.txtPlayer.TabIndex = 2;
             // 
@@ -66,6 +67,7 @@
             // 
             this.txtOther.Location = new System.Drawing.Point(348, 173);
             this.txtOther.Name = "txtOther";
+            this.txtOther.ReadOnly = true;
             this.txtOther.Size = new System.Drawing.Size(100, 22);
             this.txtOther.TabIndex = 4;
             // 
@@ -78,24 +80,24 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "對手";
             // 
-            // label3
+            // lbl_result
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.Control;
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(272, 248);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 12);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
-            this.label3.Visible = false;
+            this.lbl_result.AutoSize = true;
+            this.lbl_result.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_result.Font = new System.Drawing.Font("PMingLiU", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbl_result.ForeColor = System.Drawing.Color.Red;
+            this.lbl_result.Location = new System.Drawing.Point(271, 222);
+            this.lbl_result.Name = "lbl_result";
+            this.lbl_result.Size = new System.Drawing.Size(47, 19);
+            this.lbl_result.TabIndex = 5;
+            this.lbl_result.Text = "結果";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 404);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lbl_result);
             this.Controls.Add(this.txtOther);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPlayer);
@@ -115,7 +117,7 @@
         private System.Windows.Forms.TextBox txtPlayer;
         private System.Windows.Forms.TextBox txtOther;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_result;
     }
 }
 

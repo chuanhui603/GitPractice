@@ -19,17 +19,19 @@ namespace PapperScissorRock
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            paperScissorRockGame game = new paperScissorRockGame();
-            var player = game.GetGesture();
-            txtPlayer.Text = 
+
+            Gesture player = paperScissorRockGame.GetGesture();
+            Gesture other = paperScissorRockGame.GetGesture();
+            txtPlayer.Text = player.ToString();
+            txtOther.Text = other.ToString();
+            lbl_result.Text = paperScissorRockGame.GameOutCome(player, other).ToString();
+
         }
     }
-
 
     public enum Gesture
     {
         Sciccors, Paper, Rock
-
     }
 
     public enum GameOutCome
@@ -42,57 +44,19 @@ namespace PapperScissorRock
         public static GameOutCome GameOutCome(Gesture player, Gesture other)
         {
             var result = new GameOutCome();
-            //Draw
-            if (player == Gesture.Paper && other == Gesture.Paper)
-            {
+            if (player == other)
                 result = (GameOutCome)2;
-            }
-            else if (player == Gesture.Rock && other == Gesture.Rock)
-            {
-                result = (GameOutCome)2;
-            }
-            else if (player == Gesture.Sciccors && other == Gesture.Sciccors)
-            {
-                result = (GameOutCome)2;
-            }
-
-            //Win
-            else if (player == Gesture.Paper && other == Gesture.Rock)
-            {
+            else if (player + 1 == other || player == (Gesture)2 && other == (Gesture)0)
                 result = (GameOutCome)0;
-            }
-            else if (player == Gesture.Rock && other == Gesture.Sciccors)
-            {
-                result = (GameOutCome)0;
-            }
-            else if (player == Gesture.Sciccors && other == Gesture.Paper)
-            {
-                result = (GameOutCome)0;
-            }
-
-            //Lose
-
-            else if (player == Gesture.Paper && other == Gesture.Sciccors)
-            {
+            else if (player - 1 == other || player == (Gesture)0 && other == (Gesture)2)
                 result = (GameOutCome)1;
-            }
-            else if (player == Gesture.Rock && other == Gesture.Paper)
-            {
-                result = (GameOutCome)1;
-            }
-            else if (player == Gesture.Sciccors && other == Gesture.Rock)
-            {
-                result = (GameOutCome)1;
-            }
             return result;
-
-
         }
 
         public static Gesture GetGesture()
         {
-            Random random = new Random();
-            var result = random.Next(0, 4);
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+            var result = random.Next(0, 3);
             return (Gesture)result;
         }
     }
