@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ThrowDice.Properties
+namespace DiceThrow.Properties
 {
 
 

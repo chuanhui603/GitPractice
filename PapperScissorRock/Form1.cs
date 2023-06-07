@@ -44,9 +44,9 @@ namespace PapperScissorRock
             var result = new GameOutCome();
             if (player == other)
                 result = (GameOutCome)2;
-            else if (player + 1 == other || player == (Gesture)2 && other == (Gesture)0)  //Sciccors=0 papper=1,Rock=2 所以除了2 0組合 player只要+1即為win
+            else if ( player == (Gesture)2 && other == (Gesture)0 || player + 1 == other)  //Sciccors=0 papper=1,Rock=2 所以除了2 0組合 player只要+1即為win
                 result = (GameOutCome)0;
-            else if (player - 1 == other || player == (Gesture)0 && other == (Gesture)2) ////Sciccors=0 papper=1,Rock=2 所以除了0 2組合 player只要-1即為lose
+            else if (  player == (Gesture)0 && other == (Gesture)2|| player - 1 == other) ////Sciccors=0 papper=1,Rock=2 所以除了0 2組合 player只要-1即為lose
                 result = (GameOutCome)1;
             return result;
         }
