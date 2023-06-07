@@ -17,8 +17,6 @@ namespace ThrowDice
             InitializeComponent();
         }
 
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             FourDicesGame game = new FourDicesGame();
@@ -43,9 +41,7 @@ namespace ThrowDice
             txtDice4.Text = dices[3].Point.ToString();
             lblsame.Text = sameNumber.ToString();
             lbltotal.Text = totalNumber.ToString();
-
         }
-
 
     }
 
@@ -69,7 +65,6 @@ namespace ThrowDice
             Supplyer = Supplyer ?? new defaultRandom();
             randomPoint = Supplyer.Next(1, 7);
         }
-
 
         //給Point隨機值?
         public int Point => randomPoint;
@@ -100,16 +95,13 @@ namespace ThrowDice
             return random.Next(minValue, maxValue);
         }
 
-
-
     }
 
     public class FourDicesGame  //四顆骰子遊戲
     {
         public Dice[] dices
         {
-            get;
-            set;
+            get;set;
         }
         public Dice[] Dices()
         {
